@@ -70,6 +70,9 @@ apt install -y "${APT_OPTS[@]}" \
   termux-auth \
   neofetch
 
+info "Setting up motd..."
+echo "Bonjour !!!" > "${PREFIX}/etc/motd"
+
 info "Setting up bash completions..."
 
 info "Create ~/.bashrc..."
