@@ -205,9 +205,18 @@ IP=$(ip route get 1.1.1.1 2>/dev/null \
 
 if command -v sv-enable >/dev/null 2>&1; then
   sv-enable sshd 2>/dev/null \
-    || warn "Could not enable sshd service yet. Restart Termux, then run: sv-enable sshd"
-  sv start sshd 2>/dev/null \
-    || warn "Could not start sshd. Restart Termux, then run: sv start sshd"
+    || warn "Could not register sshd service. Restart Termux, then run: sv-enable sshd"
+
+  if pgrep -x runsvdir >/dev/null 2>&1; then
+    sv start sshd 2>/dev/null \
+      || warn "Could not start sshd service. Run: sv start sshd"
+  else
+    # runsvdir not running yet (termux-services was just installed this session)
+    # start sshd directly; it will auto-start via termux-services after next Termux restart
+    sshd 2>/dev/null \
+      || warn "Could not start sshd directly. Restart Termux to auto-start via termux-services."
+    warn "termux-services daemon not active yet — sshd started directly. Restart Termux to enable auto-start."
+  fi
 else
   warn "termux-services not active in this session. Restart Termux, then run: sv-enable sshd && sv start sshd"
 fi
