@@ -21,6 +21,8 @@ info "Setting mirror to Cloudflare CDN..."
 # echo "deb https://ftp.fau.de/termux/termux-main stable main" > "${PREFIX}/etc/apt/sources.list"
 echo "deb https://packages-cf.termux.dev/apt/termux-main stable main" > "${PREFIX}/etc/apt/sources.list"
 
+mkdir -p "${PREFIX}/etc/apt/sources.list.d"
+
 info "Adding X11 repository for GUI apps..."
 echo "deb https://packages-cf.termux.dev/apt/termux-x11 x11 main" > "${PREFIX}/etc/apt/sources.list.d/x11.list"
 
