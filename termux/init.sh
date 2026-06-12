@@ -34,9 +34,6 @@ for i in $(seq 1 30); do
 done
 [[ -d "${HOME}/storage/shared" ]] || warn "Storage not accessible after 30s — grant permission manually if needed."
 
-info "Add root repo and x11-repo for additional packages..."
-pkg install -y root-repo x11-repo
-
 info "Preparing directories..."
 ln -s "${HOME}/storage/shared" "${HOME}/sdcard" 2>/dev/null || true
 
@@ -243,4 +240,5 @@ echo "Useful next steps:"
 echo "  • Run '. ~/.bashrc' to reload PATH"
 echo "  • Verify:          python --version"
 echo "  • Install extras:  apt install ffmpeg imagemagick"
+echo "  • For GUI/X11:     pkg install x11-repo && apt install xorg tigervnc xfce4"
 echo "============================================"
