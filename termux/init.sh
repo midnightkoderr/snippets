@@ -17,9 +17,12 @@ APT_OPTS=(-o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confo
 
 cd "${HOME}" || die "Failed to change directory to ${HOME}."
 
-info "Setting mirror to ftp.fau.de..."
+info "Setting mirror to Cloudflare CDN..."
 # echo "deb https://ftp.fau.de/termux/termux-main stable main" > "${PREFIX}/etc/apt/sources.list"
 echo "deb https://packages-cf.termux.dev/apt/termux-main stable main" > "${PREFIX}/etc/apt/sources.list"
+
+info "Adding X11 repository for GUI apps..."
+echo "deb https://packages-cf.termux.dev/apt/termux-x11 x11 main" > "${PREFIX}/etc/apt/sources.list.d/x11.list"
 
 info "Requesting storage permission..."
 echo ""
