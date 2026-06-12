@@ -27,6 +27,12 @@ echo "A system dialog will appear asking for storage access."
 echo "Tap 'Allow' to enable access to /sdcard and Downloads."
 echo ""
 termux-setup-storage || warn "Storage setup skipped or already done."
+echo "Waiting for storage access..."
+for i in $(seq 1 30); do
+  [[ -d "${HOME}/storage/shared" ]] && break
+  sleep 1
+done
+[[ -d "${HOME}/storage/shared" ]] || warn "Storage not accessible after 30s — grant permission manually if needed."
 
 info "Add root repo and x11-repo for additional packages..."
 pkg install -y root-repo x11-repo
