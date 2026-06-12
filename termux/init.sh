@@ -12,8 +12,8 @@ command -v apt >/dev/null 2>&1 || die "'apt' not found — is this a fresh Termu
 
 info "Welcome to Termux setup! This script will configure your environment, install core tools, and set up an SSH server for remote access."
 
-export DEBIAN_FRONTEND=noninteractive
 export SSHD_PORT=2222
+APT_OPTS=(-o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold")
 
 cd "${HOME}" || die "Failed to change directory to ${HOME}."
 
@@ -38,9 +38,9 @@ mkdir -p "${HOME}/.local/bin" "${HOME}/.ssh"
 chmod 700 "${HOME}/.ssh"
 
 info "Installing core tools..."
-apt update && apt upgrade -y
+apt update && apt upgrade -y "${APT_OPTS[@]}"
 
-apt install -y \
+apt install -y "${APT_OPTS[@]}" \
   git \
   wget \
   openssh \
