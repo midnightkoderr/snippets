@@ -15,9 +15,11 @@ curl -fsSL https://raw.githubusercontent.com/midnightkoderr/snippets/main/termux
 ### Install llama.cpp
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/midnightkoderr/llama.cpp-android-gpu/main/installer.sh | bash -s -- --install-dir ~/.local/bin --lib-dir ~/.local/lib
+curl -fsSL https://raw.githubusercontent.com/midnightkoderr/llama.cpp-android/main/install.sh | bash -s -- --hexagon
 ```
 
+### Uninstall llama.cpp
+
 ```bash
-echo 'export LD_LIBRARY_PATH=${HOME}/.local/lib:${LD_LIBRARY_PATH}' >> ~/.bashrc
+curl -fsSL https://raw.githubusercontent.com/midnightkoderr/llama.cpp-android/main/uninstall.sh | bash
 ```
