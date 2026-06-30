@@ -67,7 +67,8 @@ apt install -y --no-install-recommends "${APT_OPTS[@]}" \
   termux-exec \
   termux-tools \
   termux-auth \
-  neofetch
+  neofetch \
+  neovim
 
 info "Setting up motd..."
 echo "Bonjour !!!" > "${PREFIX}/etc/motd"
