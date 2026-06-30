@@ -48,23 +48,20 @@ chmod 700 "${HOME}/.ssh"
 info "Installing core tools..."
 apt update && apt upgrade -y "${APT_OPTS[@]}"
 
-apt install -y "${APT_OPTS[@]}" \
+apt install -y --no-install-recommends "${APT_OPTS[@]}" \
   git \
-  wget \
   openssh \
-  gnupg \
   tar \
   zip \
-  neovim \
   htop \
   which \
-  man \
+  mandoc \
   python \
+  python-pip \
   bash-completion \
   file \
   iproute2 \
   util-linux \
-  nodejs \
   termux-api \
   termux-services \
   termux-exec \
@@ -89,7 +86,7 @@ if [[ -f "${HOME}/.alias" ]]; then
   . "${HOME}/.alias"
 fi
 
-export LD_LIBRARY_PATH="${PREFIX}/lib:${LD_LIBRARY_PATH:-}"
+export LD_LIBRARY_PATH="/vendor/lib64:${HOME}/.local/lib:${PREFIX}/lib:${LD_LIBRARY_PATH:-}"
 
 EOF
 
