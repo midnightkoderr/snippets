@@ -77,8 +77,6 @@ info "Setting up bash completions..."
 
 info "Create ~/.bashrc..."
 cat > "${HOME}/.bashrc" <<'EOF'
-export PATH="${HOME}/.local/bin:${PATH}"
-
 if [[ -f "${PREFIX}/share/bash-completion/bash_completion" ]]; then
   . "${PREFIX}/share/bash-completion/bash_completion"
 fi
@@ -86,6 +84,8 @@ fi
 if [[ -f "${HOME}/.alias" ]]; then
   . "${HOME}/.alias"
 fi
+
+export PATH="${HOME}/.local/bin:${PATH}"
 
 export LD_LIBRARY_PATH="/vendor/lib64:${HOME}/.local/lib:${PREFIX}/lib:${LD_LIBRARY_PATH:-}"
 

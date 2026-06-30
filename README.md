@@ -12,14 +12,6 @@ This script sets up a Termux environment with some useful packages and configura
 curl -fsSL https://raw.githubusercontent.com/midnightkoderr/snippets/main/termux/init.sh | bash
 ```
 
-### Install llama.cpp
+### llama.cpp
 
-```bash
-curl -fsSL https://raw.githubusercontent.com/midnightkoderr/llama.cpp-android/main/install.sh | bash -s -- --hexagon
-```
-
-### Uninstall llama.cpp
-
-```bash
-curl -fsSL https://raw.githubusercontent.com/midnightkoderr/llama.cpp-android/main/uninstall.sh | bash
-```
+[docs](https://github.com/midnightkoderr/llama.cpp-android/blob/main/README.md)
